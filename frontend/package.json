@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "copy-abis": "cp ../contract/out/AmmunitionVault.sol/AmmunitionVault.json ./src/abis/AmmunitionVault.json && cp ../contract/out/FlashLender.sol/FlashLender.json ./src/abis/FlashLender.json && cp ../contract/out/MockERC20.sol/MockERC20.json ./src/abis/MockERC20.json && cp ../keeper/deployed_addresses.json ./src/abis/deployed_addresses.json",
-    "build": "npm run copy-abis && next build --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },
