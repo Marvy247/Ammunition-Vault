@@ -11,6 +11,7 @@ export interface KeeperMetrics {
   lastExecutionTime: number;
   circuitBreakerActive: boolean;
   consecutiveFailures: number;
+  successRate: number;
 }
 
 class KeeperMonitor {
@@ -56,7 +57,8 @@ class KeeperMonitor {
       averageExecutionTime: 0,
       lastExecutionTime: 0,
       circuitBreakerActive: false,
-      consecutiveFailures: 0
+      consecutiveFailures: 0,
+      successRate: 100
     };
   }
 
@@ -127,8 +129,15 @@ class KeeperMonitor {
     this.logInfo('Circuit breaker deactivated');
   }
 
-  getMetrics(): KeeperMetrics {
-    return { ...this.metrics };
+  getMetrics(): KeeperMetrics & { successRate: number } {
+    const successRate = this.metrics.totalStrategies > 0
+      ? (this.metrics.successfulStrategies / this.metrics.totalStrategies) * 100
+      : 100;
+
+    return {
+      ...this.metrics,
+      successRate: Math.round(successRate * 10) / 10 // Round to 1 decimal place
+    };
   }
 
   getHealthStatus(): {
