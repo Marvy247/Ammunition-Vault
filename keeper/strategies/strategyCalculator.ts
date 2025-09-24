@@ -89,7 +89,12 @@ class StrategyCalculator {
     const timeBasedVolume = this.calculateTimeBasedVolume(now);
 
     // Add some randomness to make it more realistic
-    const randomFactor = 0.8 + (Math.random() * 0.4); // 0.8 to 1.2 range
+    let randomFactor = 0.8 + (Math.random() * 0.4); // 0.8 to 1.2 range
+
+    // Ensure randomFactor is a valid number
+    if (isNaN(randomFactor) || randomFactor <= 0) {
+      randomFactor = 1.0;
+    }
 
     return {
       price: 2000 * randomFactor,
@@ -133,7 +138,7 @@ class StrategyCalculator {
     // Weekend effect (lower liquidity)
     const day = new Date(timestamp).getUTCDay();
     if (day === 0 || day === 6) {
-      baseLiquidity = baseLiquidity * BigInt("0.6"); // 60% of normal liquidity
+      baseLiquidity = (baseLiquidity * BigInt(6)) / BigInt(10); // 60% of normal liquidity
     }
 
     return baseLiquidity;
@@ -152,7 +157,7 @@ class StrategyCalculator {
 
     // Peak hours (11 AM - 3 PM UTC)
     if (hour >= 11 && hour <= 15) {
-      baseVolume = baseVolume * BigInt("1.5"); // 50% more volume
+      baseVolume = (baseVolume * BigInt(3)) / BigInt(2); // 50% more volume
     }
 
     return baseVolume;
@@ -192,7 +197,7 @@ class StrategyCalculator {
 
     // Adjust based on volatility
     if (marketConditions.volatility > 0.2) {
-      loanAmount = loanAmount * BigInt("0.5"); // Reduce loan size in high volatility
+      loanAmount = loanAmount / BigInt(2); // Reduce loan size in high volatility
     }
 
     // Don't exceed available balance (with 20% buffer)
@@ -211,8 +216,8 @@ class StrategyCalculator {
     // Adjust based on market conditions - minimal multipliers
     let profitMultiplier = 1.0;
 
-    // Higher volatility = slightly higher potential profit (but very conservative)
-    if (marketConditions.volatility > 0.1) {
+    // Ensure volatility is a valid number
+    if (!isNaN(marketConditions.volatility) && marketConditions.volatility > 0.1) {
       profitMultiplier += marketConditions.volatility * 0.1; // Max 0.1x multiplier
     }
 
@@ -224,6 +229,11 @@ class StrategyCalculator {
     // Higher volume = slightly higher potential profit
     if (marketConditions.volume24h > ethers.parseUnits("1000000", 6)) {
       profitMultiplier += 0.01; // 1% instead of 5%
+    }
+
+    // Ensure profitMultiplier is a valid number and within reasonable bounds
+    if (isNaN(profitMultiplier) || profitMultiplier <= 0) {
+      profitMultiplier = 1.0;
     }
 
     const adjustedProfit = baseProfit * BigInt(Math.floor(profitMultiplier));

@@ -310,7 +310,13 @@ class RealisticKeeper {
       const actualProfit = strategy.expectedProfit;
 
       // Add some variance to make it more realistic (±10%)
-      const variance = 0.9 + (Math.random() * 0.2); // 0.9 to 1.1 range
+      let variance = 0.9 + (Math.random() * 0.2); // 0.9 to 1.1 range
+
+      // Ensure variance is a valid number
+      if (isNaN(variance) || variance <= 0) {
+        variance = 1.0;
+      }
+
       const realizedProfit = actualProfit * BigInt(Math.floor(variance * 100)) / BigInt(100);
 
       monitor.recordStrategySuccess(strategyId, realizedProfit.toString(), actualGasUsed, executionTime);
