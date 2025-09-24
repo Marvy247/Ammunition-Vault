@@ -1,0 +1,37 @@
+{
+  "name": "keeper",
+  "version": "1.0.0",
+  "description": "Realistic Keeper Simulation for Ammunition Vault",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx index.ts",
+    "dev": "tsx --watch index.ts",
+    "deploy": "tsx deploy.ts",
+    "demo": "tsx demo.ts",
+    "keeper": "tsx improved-keeper.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "keeper",
+    "defi",
+    "uniswap",
+    "flashloan",
+    "reactive"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^24.5.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.15.0",
+    "node-cron": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.11",
+    "tsx": "^4.20.5"
+  }
+}
