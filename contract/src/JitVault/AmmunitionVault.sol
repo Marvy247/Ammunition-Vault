@@ -252,7 +252,7 @@ contract AmmunitionVault is AbstractReactive, IFlashLoanReceiver {
     }
 
     function _amountToShares(uint256 amount) internal view returns (uint256) {
-        if (totalAssets() == 0 || totalShares == 0) return amount;
+        if (totalShares == 0) return amount;
         return (amount * totalShares) / totalAssets();
     }
 }

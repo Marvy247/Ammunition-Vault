@@ -16,10 +16,7 @@ export interface KeeperConfig {
     ammunitionVault: string;
     flashLender: string;
     mockUSDC: string;
-    uniswapV3PositionManager: string;
-    uniswapV3SwapRouter: string;
     weth: string;
-    usdcWethPool: string;
   };
 
   // Strategy Configuration
@@ -67,10 +64,7 @@ const config: KeeperConfig = {
     ammunitionVault: process.env.AMMUNITION_VAULT_ADDRESS || "",
     flashLender: process.env.FLASH_LENDER_ADDRESS || "",
     mockUSDC: process.env.MOCK_USDC_ADDRESS || "",
-    uniswapV3PositionManager: process.env.UNISWAP_V3_POSITION_MANAGER || "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-    uniswapV3SwapRouter: process.env.UNISWAP_V3_SWAP_ROUTER || "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-    weth: process.env.WETH_ADDRESS || "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    usdcWethPool: process.env.USDC_WETH_POOL || "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640"
+    weth: process.env.WETH_ADDRESS || ""
   },
 
   strategy: {

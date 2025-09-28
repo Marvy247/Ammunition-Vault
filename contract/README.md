@@ -63,3 +63,10 @@ The core logic of the smart contracts can be verified through the included Found
     ```shell
     forge test --match-contract AmmunitionVaultReactiveTest -vv
     ```
+```   
+MockERC20 (asset) deployed at: 0x0073263715A90f0ea00787486AF23171CF62e9a2
+MockWETH deployed at: 0x67E7DD7C3AA753C73385F518285690adba59920E           
+FlashLender deployed at: 0xECE7C60E46e587c434DD1A22431B4816051A007C        
+MockPositionManager deployed at: 0xC29E9984fE5a8213f5a6964b0C74554c3089Def4
+AmmunitionVault deployed at: 0x1Bdb8941215b26C0c25c2985C71b3E7C9010C6De
+```

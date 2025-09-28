@@ -1,5 +1,5 @@
 import { createPublicClient, http, getContract, PublicClient, WalletClient, getAddress } from 'viem';
-import { mainnet } from 'viem/chains';
+import { defineChain } from 'viem/utils';
 import deployedAddresses from '../src/abis/deployed_addresses.json';
 
 // Import contract ABIs
@@ -7,8 +7,24 @@ import AmmunitionVaultAbi from '../src/abis/AmmunitionVault.json';
 import FlashLenderAbi from '../src/abis/FlashLender.json';
 import MockERC20Abi from '../src/abis/MockERC20.json';
 
+export const reactive = defineChain({
+  id: 1597,
+  name: 'REACTIVE Mainnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'React',
+    symbol: 'REACT',
+  },
+  rpcUrls: {
+    default: { http: ['https://mainnet-rpc.rnk.dev/'] },
+  },
+  blockExplorers: {
+    default: { name: 'Reactscan', url: 'https://reactscan.net' },
+  },
+});
+
 export const publicClient = createPublicClient({
-  chain: mainnet,
+  chain: reactive,
   transport: http(),
 });
 
