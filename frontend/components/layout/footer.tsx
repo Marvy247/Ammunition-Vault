@@ -149,7 +149,7 @@ export function Footer() {
             <div className="pt-4 space-y-2">
               <div className="flex items-center space-x-2 text-sm text-slate-400">
                 <Shield className="h-4 w-4" />
-                <span>Deployed on Ethereum Mainnet</span>
+                <span>Deployed on Reactive Mainnet</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Button variant="outline" size="sm" className="border-slate-600 text-slate-300 hover:bg-slate-800" asChild>

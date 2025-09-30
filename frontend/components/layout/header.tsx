@@ -46,7 +46,7 @@ export function Header() {
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <Badge variant="outline" className="text-xs">
-                  Ethereum Mainnet
+                  Reactive Mainnet
                 </Badge>
               </div>
             </div>
