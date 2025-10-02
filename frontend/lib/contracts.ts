@@ -53,6 +53,11 @@ export const getMockUSDCContract = (client: PublicClient | WalletClient) => {
 };
 
 export const getWETHAddress = () => deployedAddresses.weth;
-export const getUSDCWETHPoolAddress = () => deployedAddresses.usdcWethPool;
+export const getUSDCWETHPoolAddress = () => {
+  if ('usdcWethPool' in deployedAddresses) {
+    return deployedAddresses.usdcWethPool;
+  }
+  return '';
+};
 
 export const getDeployedAddresses = () => deployedAddresses;

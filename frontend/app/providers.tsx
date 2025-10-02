@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useTheme } from 'next-themes';
 
 import { wagmiConfig } from '@/lib/wagmi';
+import { reactive } from '@/lib/contracts';
 
 const queryClient = new QueryClient();
 
@@ -28,7 +29,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider theme={rainbowKitTheme}>
+        <RainbowKitProvider theme={rainbowKitTheme} initialChain={reactive}>
           {mounted && children}
         </RainbowKitProvider>
       </QueryClientProvider>
