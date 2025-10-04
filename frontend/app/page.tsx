@@ -16,6 +16,7 @@ import { TrendingUp, Shield, Zap, DollarSign, Activity, Users, Clock, AlertCircl
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { AIChatbot } from '@/components/ai-chatbot';
 
 interface ActivityLogEntry {
   timestamp: string;
@@ -557,6 +558,13 @@ export default function Home() {
           </div>
         )}
       </div>
+      <AIChatbot
+        keeperData={keeperData}
+        totalAssets={totalAssets as bigint | undefined}
+        userShares={userShares as bigint | undefined}
+        totalShares={totalShares as bigint | undefined}
+        isConnected={isConnected}
+      />
     </div>
   );
 }

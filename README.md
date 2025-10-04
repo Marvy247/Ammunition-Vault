@@ -5,10 +5,11 @@ A decentralized finance (DeFi) project featuring Reactive smart contracts for fl
 ## Features
 
 - **Flash Lending**: Secure and efficient flash loan functionality
-- **Vault Management**:Marvy247/Ammunition-Vault AmmunitionVault for asset storage and management
+- **Vault Management**: AmmunitionVault for asset storage and management
 - **Mock ERC20 Token**: For testing and development purposes
 - **Keeper Service**: Automated monitoring and maintenance scripts
 - **Web Frontend**: User-friendly interface built with Next.js
+- **AI Analytics Assistant**: An AI-powered chatbot to help users analyze vault performance and strategies.
 
 ## Project Structure
 
